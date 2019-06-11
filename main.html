@@ -1,0 +1,95 @@
+<!--프로젝트의 메인 페이지입니다.-->
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="The website's main page">
+    <meta name="author" content="Seulgi Kim">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>세종대학교 빈 강의실 찾기</title>
+
+  </head>
+
+  <body style="padding:50px 200px 50px 200px;">
+    <!--관리자 로그인 페이지로 이동할 수 있는 링크-->
+    <a href="admin_login.html" style="float:right;">관리자 로그인</a>
+
+    <h1 style="text-decoration:underline;"><CENTER>세종대학교 빈 강의실 찾기</h1>
+
+    <div style="border:2px solid black;padding:50px 200px 50px 200px;">
+
+      <!--양식을 제출하면 결과를 보여주는 페이지로 이동함-->
+      <form name="searchOpt" action="./search.php" method="post">
+        건물 선택
+        <select name="building_name" required>
+          <option name="sejong" value="sejong" selected>세종관</option>
+          <option name="jin" value="jin">진관</option>
+          <option name="daeyang AI" value="daeyang AI">대양 AI 센터</option>
+          <option name="chungmu" value="chungmu">충무관</option>
+          <option name="gunja" value="gunja">군자관</option>
+        </select>
+
+        <br><br>
+
+        <select name="weekdays" required>
+          <option name="mon" value="mon" selected>월</option>
+          <option name="tue" value="tue">화</option>
+          <option name="wed" value="wed">수</option>
+          <option name="thu" value="thu">목</option>
+          <option name="fri" value="fri">금</option>
+        </select>
+        요일
+
+        <br><br>
+
+        <input type="text" name="start_t" size="10" required> 부터~
+        <input type="text" name="end_t" size="10" required> 까지
+        <i>(시간은 HH:MM:SS의 형태로 입력하여 주십시오.)</i>
+
+
+        <br><br>
+
+        <input type="submit" value="빈 강의실 검색">
+      </form>
+
+      <script>
+        //필수 form을 작성하지 않았을 때 뜨는 알람상자
+        function check() {
+          if(searchOpt.building_name.value == "") {
+            alert("건물을 선택해 주세요.");
+            searchOpt.building_name.focus();
+            return false;
+          }
+          else if(searchOpt.weekdays.value == "") {
+            alert("요일을 선택해 주세요.");
+            searchOpt.weekdays.focus();
+            return false;
+          }
+          else if(searchOpt.start_time.value == "") {
+            alert("시작 시간을 입력해 주세요.");
+            searchOpt.start_time.focus();
+            return false;
+          }
+          else if(searchOpt.end_time.value == "") {
+            alert("종료 시간을 입력해 주세요.");
+            searchOpt.end_time.focus();
+            return false;
+          }
+          else return true;
+        }
+
+        </script>
+
+      <br><br>
+
+    </div>
+
+
+  </body>
+
+
+
+</html>
